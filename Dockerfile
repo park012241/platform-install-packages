@@ -26,7 +26,7 @@ RUN rpm -ihv https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.
 RUN rpm -ihv http://installrepo.kaltura.org/releases/kaltura-release.noarch.rpm
 RUN sed -i 's@installrepo.kaltura.org@installrepo.origin.kaltura.org@g' /etc/yum.repos.d/kaltura.repo
 RUN sed -i 's@^tsflags=nodocs@#tsflags=nodocs@g' /etc/yum.conf
-RUN yum install -y kaltura-server
+RUN yum install -y kaltura-server librdkafka librdkafka-devel --skip-broken
 
 ADD docker/install/* /root/install/
 RUN chmod +x /root/install/install.sh
